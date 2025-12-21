@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_powerly" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.powerly</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='general_settings']" position="after">
+                <app data-string="Powerly" string="Powerly" name="powerly"
+                     logo="/powerly_app/static/description/icon.png">
+                    <block title="Orders Management" name="powerly_orders_container">
+                        <setting id="powerly_sync_orders_setting">
+                            <span class="fa fa-lg fa-bolt" aria-label="Sync Orders"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Fetch latest orders from Powerly API
+                                </div>
+                                <button name="action_sync_powerly_orders"
+                                        string="Sync Orders Now"
+                                        type="object"
+                                        class="btn-primary"/>
+                            </div>
+                        </setting>
+                        <setting id="powerly_sync_feedback_setting">
+                            <span class="fa fa-lg fa-bolt" aria-label="Sync Feedback"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Fetch latest orders Feedbacks from Powerly API
+                                </div>
+                                <button name="action_sync_powerly_feedback"
+                                        string="Sync Feedbacks Now"
+                                        type="object"
+                                        class="btn-primary"/>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- List (tree) view -->
+    <record id="view_powerly_charger_tree" model="ir.ui.view">
+        <field name="name">powerly.charger.tree</field>
+        <field name="model">powerly.charger</field>
+        <field name="arch" type="xml">
+            <list string="Powerly Chargers" create="1" delete="1">
+                <field name="title"/>
+                <field name="identifier"/>
+                <field name="status"/>
+                <field name="category"/>
+                <field name="type"/>
+                <field name="price_unit"/>
+                <field name="price"/>
+                <field name="price_usd"/>
+                <field name="listed"/>
+                <field name="available"/>
+                <field name="online"/>
+                <field name="latitude"/>
+                <field name="longitude"/>
+                <field name="owner_external_id"/>
+                <field name="external_id"/>
+                <field name="token"/>
+                <field name="get_orders_count"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form view with notebook pages -->
+    <record id="view_powerly_charger_form" model="ir.ui.view">
+        <field name="name">powerly.charger.form</field>
+        <field name="model">powerly.charger</field>
+        <field name="arch" type="xml">
+            <form string="Powerly Charger">
+                <header>
+                    <button name="action_sync_single" string="Fetch Details" type="object" class="oe_highlight" data-hotkey="r"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_for_related_feedbacks" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="get_orders_count == 0">
+                            <field name="get_orders_count" widget="statinfo" string="Powerly Orders"/>
+                        </button>
+                    </div>
+                    <div class="oe_button_box" name="button_box"/>
+                    <group>
+                        <group>
+                            <field name="title"/>
+                            <field name="identifier"/>
+                            <field name="token"/>
+                            <field name="get_orders_count"/>
+                        </group>
+                        <group>
+                            <field name="status"/>
+                            <field name="category"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Identity">
+                            <group>
+                                <group invisible="1">
+                                    <field name="external_id" invisible="1" />
+                                    <field name="identifier" invisible="1" />
+                                    <field name="token" invisible="1" />
+                                </group>
+                                <group>
+                                    <field name="title"/>
+                                    <field name="description"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Classification">
+                            <group>
+                                <group>
+                                    <field name="status"/>
+                                    <field name="category"/>
+                                    <field name="type"/>
+                                </group>
+                                <group>
+                                    <field name="listed"/>
+                                    <field name="is_external"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Location">
+                            <group>
+                                <group>
+                                    <field name="latitude"/>
+                                    <field name="longitude"/>
+                                    <field name="distance"/>
+                                </group>
+                                <group>
+                                    <field name="available"/>
+                                    <field name="is_in_use"/>
+                                    <field name="is_reserved"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Configuration">
+                            <group>
+                                <group>
+                                    <field name="session_limit_type"/>
+                                    <field name="session_limit_value"/>
+                                </group>
+                                <group>
+                                    <field name="online"/>
+                                    <field name="configured"/>
+                                    <field name="secure"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Metrics and Pricing">
+                            <group>
+                                <group string="Metrics">
+                                    <field name="rating"/>
+                                    <field name="total_energy"/>
+                                    <field name="total_sessions_time"/>
+                                    <field name="orders_count"/>
+                                </group>
+                                <group string="Pricing">
+                                    <field name="price_unit"/>
+                                    <field name="price"/>
+                                    <field name="price_usd"/>
+                                    <field name="reservation_fee"/>
+                                    <field name="total_earnings"/>
+                                    <field name="earning"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Availability">
+                            <group>
+                                <group>
+                                    <field name="available"/>
+                                    <field name="is_in_use"/>
+                                    <field name="is_reserved"/>
+                                    <field name="next_reservation_near_now"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- Contact & Schedule -->
+                        <page string="Contact and Schedule">
+                            <group>
+                                <group>
+                                    <field name="contact_number"/>
+                                </group>
+                                <group>
+                                    <field name="open_time"/>
+                                    <field name="close_time"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- Address -->
+                        <page string="Address">
+                            <group>
+                                <group>
+                                    <field name="address_line_1"/>
+                                    <field name="address_line_2"/>
+                                    <field name="address_line_3"/>
+                                </group>
+                                <group>
+                                    <field name="city"/>
+                                    <field name="state"/>
+                                    <field name="zipcode"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- Media & Misc -->
+                        <page string="Media and Misc">
+                            <group>
+                                <group>
+                                    <field name="image_url"/>
+                                    <field name="media" widget="json"/>
+                                </group>
+                                <group>
+                                    <field name="external_details" widget="json"/>
+                                    <field name="connectors" widget="json"/>
+                                    <field name="amenities" widget="json"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Ownership">
+                            <group>
+                                <group>
+                                    <field name="owner_external_id"/>
+                                    <!-- If you add Many2one to powerly.user, include: <field name="owner_id"/> -->
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Technical">
+                            <group>
+                                <group>
+                                    <field name="external_id" readonly="1"/>
+                                    <field name="token" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_powerly_charger" model="ir.actions.act_window">
+        <field name="name">Powerly Chargers</field>
+        <field name="res_model">powerly.charger</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_powerly_charger_root" name="Powerly" sequence="10" web_icon="static/description/icon.png"/>
+    <menuitem id="menu_powerly_charger" name="Chargers" parent="menu_powerly_charger_root" action="action_powerly_charger" sequence="20"/>
+</odoo>

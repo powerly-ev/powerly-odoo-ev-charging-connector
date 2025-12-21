@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_powerly_api_service,powerly_api_service,model_powerly_api_service,powerly_connector.group_powerly_connector_manager,1,1,1,1
+access_powerly_charger,powerly_charger,model_powerly_charger,powerly_connector.group_powerly_connector_manager,1,1,1,0
+access_powerly_orders,powerly.orders,model_powerly_orders,powerly_connector.group_powerly_connector_manager,1,1,1,0
+access_powerly_orders_feedback,powerly.orders.feedback,model_powerly_orders_feedback,powerly_connector.group_powerly_connector_manager,1,1,1,0

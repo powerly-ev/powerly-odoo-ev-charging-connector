@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- List view -->
+    <record id="view_powerly_orders_tree" model="ir.ui.view">
+        <field name="name">powerly.orders.tree</field>
+        <field name="model">powerly.orders</field>
+        <field name="arch" type="xml">
+            <list string="Powerly Orders" create="0">
+                <field name="external_id"/>
+                <field name="charger_id"/>
+                <field name="delivery_date"/>
+                <field name="charging_session_time"/>
+                <field name="charging_session_energy"/>
+                <field name="price"/>
+                <field name="earning"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="view_powerly_orders_form" model="ir.ui.view">
+        <field name="name">powerly.orders.form</field>
+        <field name="model">powerly.orders</field>
+        <field name="arch" type="xml">
+            <form string="Powerly Order" create="0">
+                <header>
+                    <button name="action_sync_single" string="Refresh" type="object" class="oe_highlight"/>
+                    <button name="action_update_feedback" string="Update Feedback" type="object" class="oe_highlight"/>
+                    <button name="create_invoice" string="Create Invoice" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="external_id" invisible="1" />
+                            <field name="charger_id" readonly="1" />
+                            <field name="delivery_date" readonly="1" />
+                            <field name="status" readonly="1" />
+                        </group>
+                        <group>
+                            <field name="charging_session_time" readonly="1" />
+                            <field name="charging_session_energy" readonly="1" />
+                            <field name="price" readonly="1" />
+                            <field name="earning" readonly="1" />
+                        </group>
+                    </group>
+                    <group string="Details">
+                        <group>
+                            <field name="unit" readonly="1" />
+                            <field name="quantity" readonly="1" />
+                            <field name="fees" readonly="1" />
+                        </group>
+                        <group>
+                            <field name="user_id" invisible="1"/>
+                            <field name="connector_number" readonly="1" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Feedback">
+                            <field name="feedback_ids" readonly="1">
+                                <list create="0">
+                                    <field name="message" readonly="1" />
+                                    <field name="rating" readonly="1" />
+                                    <field name="feedback_date" readonly="1" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_powerly_orders" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">powerly.orders</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_powerly_orders" name="Orders" parent="menu_powerly_charger_root" action="action_powerly_orders" sequence="30"/>
+</odoo>
