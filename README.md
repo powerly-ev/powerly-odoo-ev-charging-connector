@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Powerly EV Charging Connector for Odoo
 
 ## Overview
@@ -59,4 +58,3 @@ Use your standard Powerly support channel for help with the connector and Powerl
 =======
 # powerly-odoo-ev-charging-connector
 Powerly Odoo EV Charging Connector. Integrates Odoo with the Powerly EV charging platform for charger management, transactions, and data synchronization.
->>>>>>> 1845234657b7eb4aa8ab354741b37df75f756134
