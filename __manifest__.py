@@ -1,7 +1,7 @@
-{'application': True,
+{'application': False,
  'author': 'Powerly',
  'auto_install': False,
- 'category': 'Industries',
+ 'category': 'IoT',
  'data': ['security/powerly_security.xml',
           'security/ir.model.access.csv',
           'data/cron_data.xml',
@@ -41,9 +41,8 @@
             'static/description/screenshot_list_chargers.png',
             'static/description/screenshot_list_orders.png'],
  'installable': True,
- 'license': 'LGPL-2',
+ 'license': 'LGPL-3',
  'name': 'Powerly EV Charging Connector',
- 'summary': 'Connect Odoo with Powerly to synchronize EV chargers, OCPP-based charging data, sessions, invoices, and '
-            'user feedback.',
+ 'summary': 'Connect Odoo with Powerly to synchronize EV chargers and charging orders from OCPP-compatible infrastructure for operations and accounting workflows.',
  'version': '18.0.1.0.0',
  'website': 'https://www.powerly.app'}
